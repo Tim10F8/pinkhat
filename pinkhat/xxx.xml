@@ -55,7 +55,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     main = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(main)
     return url
@@ -107,7 +107,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     return url
@@ -160,7 +160,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 
     main = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(main)
     return url
@@ -229,7 +229,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[crewschedule.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     return url
@@ -240,7 +240,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 
 <dir>
   <name>Porn Tubes</name>
-  <link>https://gitlab.com/thecrewwh/pinkhat/-/raw/master/pinkhat/porn.xml</link>
+  <link>https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/porn.xml</link>
   <thumbnail>https://previews.123rf.com/images/eyematrix/eyematrix1103/eyematrix110300035/8984900-adults-only-rubber-stamp.jpg</thumbnail>
   <fanart>https://cdn-pics.pornhd.com/pornhd/header/category/9_phd_category_big_blonde-porn.jpg</fanart>
 </dir>
@@ -322,7 +322,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     r = url
@@ -385,7 +385,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     r = url
@@ -448,7 +448,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     r = url
@@ -511,7 +511,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     r = url
@@ -574,7 +574,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param1]'
     from resources.lib.modules import control
-    adultresolver = control.cdnImport('http://continuum.watch/Crew/pinkhat/adultresolver.xml', 'adultresolver')
+    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
     url = adultresolver.resolve(url)
     return url
@@ -585,7 +585,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 
 <dir>
   <name>mPorno</name>
-  <link>http://continuum.watch/Crew/pinkhat/mporno.xml</link>
+  <link>https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/mporno.xml</link>
   <thumbnail>https://previews.123rf.com/images/eyematrix/eyematrix1103/eyematrix110300035/8984900-adults-only-rubber-stamp.jpg</thumbnail>
   <fanart>https://cdn-pics.pornhd.com/pornhd/header/category/9_phd_category_big_blonde-porn.jpg</fanart>
 </dir>
