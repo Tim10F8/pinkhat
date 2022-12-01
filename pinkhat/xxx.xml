@@ -308,7 +308,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     u = []
     for i in range(1, 10): u += [url + str(i) + '/']
     u = page().run(u)
-    r = re.findall('(?s)id="post-index-content(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^=]*)="([^"]*)(?:[^"]*)(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
+    r = re.findall('(?s)id="post-index-content.*?href="([^"]*).*?="([^"]*)(?:[^"]*).*?title="([^"]*)', u)
     r = [(i[0],i[1],unescape(i[2])) for i in r if 'SITERIP' not in i[2]]
     return r
 ]]></expres>
