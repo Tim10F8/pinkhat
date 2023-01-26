@@ -16,7 +16,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from six.moves.urllib.parse import quote_plus
 
     def cleanup(s):
-        return re.sub('&(\d+);', '', s)
+        return re.sub('&#(\d+);', '', s)
 
     def kboard():
         w = xbmcgui.Window(10000) ; p = 'plugin.video.thecrew.regex.search'
@@ -57,12 +57,13 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client
     import re
-    main = '[makelist.param5]'
-    from resources.lib.modules import control
-    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
-    adultresolver = adultresolver.streamer()
-    url = adultresolver.resolve(main)
-    return url
+    url = '[makelist.param5]'
+    u = client.request(url)
+    c = re.findall('(?s)mp4"\,"videoUrl":"([^"]*)',u)[0].replace('\/','/')
+    o = client.request(c)
+    e = re.findall('(?s)ty"\:"(\d+)(?:[^\:]*)\:"([^"]*)', o)
+    e = [(i[0],i[1].replace('\/','/')) for i in e]
+    return e
 ]]></expres>
 <page></page>
 </regex>
