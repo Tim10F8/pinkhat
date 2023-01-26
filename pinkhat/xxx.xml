@@ -16,7 +16,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from six.moves.urllib.parse import quote_plus
 
     def cleanup(s):
-        return re.sub('&#(\d+);', '', s)
+        return re.sub('&(\d+);', '', s)
 
     def kboard():
         w = xbmcgui.Window(10000) ; p = 'plugin.video.thecrew.regex.search'
@@ -41,7 +41,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     for i in range(1, 6): u += [url + str(i) + '&hd=1']
     u = page().run(u)
     u = re.findall('(?s)o_thumb="([^"]*)"(?:[^"]*)"(?:[^"]*)"(?:[^=]*)="([^"]*)(?:[^\<]*)<(?:[^\<]*)<(?:[^\<]*)<(?:[^\>]*)>([^\<]*)<(?:[^\>]*)>([^\<]*)<(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
-    r = [(i[0], i[1], i[2].replace(' ',''), i[3].replace(' ',''),'https://www.redtube.com' + cleanup(i[4])) for i in u]
+    r = [(i[0], cleanup(i[1]), i[2].replace(' ',''), i[3].replace(' ',''),'https://www.redtube.com' + i[4]) for i in u]
     return r
 ]]></expres>
 <page></page>
@@ -49,7 +49,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 <regex>
 <name>playurl</name>
 <listrepeat><![CDATA[
-        <title>[playurl.param1]</title>
+        <title>[COLOR firebrick] [playurl.param1][/COLOR]</title>
         <link>[playurl.param2]</link>
         <thumbnail>[makelist.param1]</thumbnail>
 ]]></listrepeat>
