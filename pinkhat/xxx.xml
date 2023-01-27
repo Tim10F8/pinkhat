@@ -171,6 +171,118 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 </item>
 
 <item>
+<name>Porn Movies - [COLOR orchid] PA[/COLOR]</name>
+<link>$doregex[makelist]</link>
+<thumbnail></thumbnail>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+        <title>[makelist.param3]</title>
+        <link>$doregex[playurl]</link>
+        <thumbnail>[makelist.param2]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+def GetLSProData(page_data,Cookie_Jar,m,url = ''):
+    from resources.lib.modules import client,workers
+    import re,xbmc,xbmcgui
+
+    def cleanup(s):
+        return re.sub('&#(\d+);', '', s)
+
+    class page:
+        def run(self, r):
+            threads = [] ; self.r = [] ; r = [(r.index(i)+1, i) for i in r]
+            for i in r: threads.append(workers.Thread(self.request, i))
+            [i.start() for i in threads] ; [i.join() for i in threads]
+            return ''.join([str(i[1]) for i in sorted(self.r, key=lambda x: x[0])])
+        def request(self, i):
+            self.r += [(i[0], client.request(i[1]))]       
+
+    url = 'https://pandamovies.org/movies/page/'
+    u = []
+    for i in range(1, 10): u += [url + str(i)]
+    u = page().run(u)
+    r = re.findall('(?s)ml-item">(?:[^=]*)="([^"]*)(?:[^<]*)<img src="([^"]*).+?h2>([^<]*)', u)
+    r = [(i[0],i[1],cleanup(i[2])) for i in r]
+    return r
+]]></expres>
+<page></page>
+</regex>
+<regex>
+<name>playurl</name>
+<listrepeat><![CDATA[
+        <title>[COLOR firebrick] [playurl.param2][/COLOR]</title>
+        <link>[playurl.param1]</link>
+        <thumbnail>[makelist.param1]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+def GetLSProData(page_data,Cookie_Jar,m,url = ''):
+    from resources.lib.modules import client
+    import re
+    r = re.findall('(?s)-cell"(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^>]*)>(?:[^>]*)>([^<]*)', page_data)
+    return r
+]]></expres>
+<page>[makelist.param1]</page>
+</regex>
+</item>
+
+<item>
+<name>New Videos - [COLOR orchid] XXF[/COLOR]</name>
+<link>$doregex[makelist]</link>
+<thumbnail></thumbnail>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+        <title>[makelist.param3] - [makelist.param4]</title>
+        <link>$doregex[playurl]</link>
+        <thumbnail>[makelist.param2]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+def GetLSProData(page_data,Cookie_Jar,m,url = ''):
+    from resources.lib.modules import client,workers
+    import re,xbmc,xbmcgui
+
+    def cleanup(s):
+        return re.sub('&#(\d+);', '', s)
+
+    class page:
+        def run(self, r):
+            threads = [] ; self.r = [] ; r = [(r.index(i)+1, i) for i in r]
+            for i in r: threads.append(workers.Thread(self.request, i))
+            [i.start() for i in threads] ; [i.join() for i in threads]
+            return ''.join([str(i[1]) for i in sorted(self.r, key=lambda x: x[0])])
+        def request(self, i):
+            self.r += [(i[0], client.request(i[1]))]       
+
+    url = 'https://www.xxxfiles.com/latest-updates/'
+    u = []
+    for i in range(1, 6): u += [url + str(i) + '/']
+    u = page().run(u)
+    r = re.findall('(?s)thumb item(?:[^=]*)="([^"]*)(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)" alt="([^"]*)">(?:[^>]*)>([^<]*)', u)
+    r = [(i[0],i[1],cleanup(i[2]),i[3]) for i in r]
+    return r
+]]></expres>
+<page></page>
+</regex>
+<regex>
+<name>playurl</name>
+<listrepeat><![CDATA[
+        <title>[COLOR firebrick] [playurl.param2][/COLOR]</title>
+        <link>[playurl.param1]</link>
+        <thumbnail>[makelist.param2]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+def GetLSProData(page_data,Cookie_Jar,m,url = ''):
+    from resources.lib.modules import client
+    import re
+    r = re.findall('(?s)source src=\'([^\']*)(?:[^=]*)=(?:[^=]*)="([^"]*)', page_data)
+    return r
+]]></expres>
+<page>[makelist.param1]</page>
+</regex>
+</item> 
+
+<item>
 <title>[COLOR orchid][/COLOR] [COLOR white]CHATURBATE[/COLOR] [COLOR orchid][/COLOR] [COLOR orchid][/COLOR]</title>
 <link>$doregex[makelist]</link>
 <thumbnail>https://webcamstartup.com/wp-content/uploads/2014/12/chaturbate.jpg</thumbnail>
