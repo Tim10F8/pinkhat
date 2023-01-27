@@ -158,15 +158,10 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client
     import re
-
-    main = '[makelist.param1]'
-    from resources.lib.modules import control
-    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
-    adultresolver = adultresolver.streamer()
-    url = adultresolver.resolve(main)
-    return url
+    r = re.findall('(?s)flash"\:(?:[^\:]*)\:"([^"]*)', page_data)[0].replace('\/','/')
+    return r + '|User-Agent=Mozilla/5.0&Referer=[makelist.param1]' 
 ]]></expres>
-<page></page>
+<page>[makelist.param1]</page>
 </regex>
 </item>
 
