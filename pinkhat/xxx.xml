@@ -70,6 +70,66 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 </item>
 
 <item>
+<name>HD & UHD New Videos -[COLOR orchid] WH[/COLOR]</name>
+<link>$doregex[makelist]</link>
+<thumbnail></thumbnail>
+<regex>
+<name>makelist</name>
+<listrepeat><![CDATA[
+        <title>[makelist.param2]</title>
+        <link>$doregex[playurl]</link>
+        <thumbnail>[makelist.param3]</thumbnail>
+]]></listrepeat>
+<expres><![CDATA[#$pyFunction
+def GetLSProData(page_data,Cookie_Jar,m,url = ''):
+    from resources.lib.modules import client,workers
+    import re,xbmc,xbmcgui
+
+    def cleanup(s):
+        return re.sub('&#(\d+);', '', s)
+
+    class page:
+        def run(self, r):
+            threads = [] ; self.r = [] ; r = [(r.index(i)+1, i) for i in r]
+            for i in r: threads.append(workers.Thread(self.request, i))
+            [i.start() for i in threads] ; [i.join() for i in threads]
+            return ''.join([str(i[1]) for i in sorted(self.r, key=lambda x: x[0])])
+        def request(self, i):
+            self.r += [(i[0], client.request(i[1]))]       
+
+    url = 'https://www.whoreshub.com/latest-updates/'
+    u = []
+    for i in range(1, 10): u += [url + str(i) + '/']
+    u = page().run(u)
+    r = re.findall('(?s)"item" href="([^"]*)" title="([^"]*).+?data-src="([^"]*)', u)
+    r = [(i[0],i[1],'https:'+i[2]) for i in r]
+    return r
+]]></expres>
+<page></page>
+</regex>
+<regex>
+<name>playurl</name>
+<expres><![CDATA[#$pyFunction
+def GetLSProData(page_data,Cookie_Jar,m,url = ''):
+    from resources.lib.modules import client, control
+    import re
+    r = re.findall('(?s)_url(?:[^\']*)\'(h[^\']*).+?text\: \'([^\']*)', page_data)
+    r0 = [i[0]+'|User-Agent=Mozilla/5.0&Referer=[makelist.param1]' for i in r if 'mp4' in i[0]] ; r1 = [i[1] for i in r]
+
+    if len(r1) > 1:
+        label = control.infoLabel('listitem.label')
+        select = control.dialog.select(label.upper(), r1)
+        if select == -1: return
+        link = r0[select]
+    else:
+        link = r0[0]
+    return link
+]]></expres>
+<page>[makelist.param1]</page>
+</regex>
+</item>
+
+<item>
 <name>Cliphunter - Latest</name>
 <link>$doregex[makelist]</link>
 <thumbnail></thumbnail>
