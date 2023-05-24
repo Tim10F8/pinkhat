@@ -431,7 +431,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client,workers
     import re,xbmc,xbmcgui
-    def unescape(s):
+    def cleanup(s):
         return re.sub('&#(\d+);', '', s)    
     class page:
         def run(self, r):
@@ -440,15 +440,14 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
             [i.start() for i in threads] ; [i.join() for i in threads]
             return ''.join([str(i[1]) for i in sorted(self.r, key=lambda x: x[0])])
         def request(self, i):
-            self.r += [(i[0], client.request(i[1]))]       
-            self.r += r.split('<div class=page-list-column', 1)[-1]; r += r.split('<div class=navigation', 1)[0]
+            self.r += [(i[0], client.request(i[1]))]
 
     url = 'https://nablog.org/sites/page/'
     u = []
-    for i in range(1, 6): u += [url + str(i) + '/']
+    for i in range(1, 10): u += [url + str(i) + '/']
     u = page().run(u)
-    r = re.findall('(?s)<li><a href="([^"]*)" title="([^"]*)', u)
-    r = [(i[0],unescape(i[1])) for i in r if '/site/' in i[0]]
+    r = re.findall('(?s)id="post-index-content(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^=]*)=(?:[^=]*)="(?:[^:]*)([^"]*)(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
+    r = [(i[0],'https'+i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
     return r
 ]]></expres>
 <page></page>
@@ -590,7 +589,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client,workers
     import re,xbmc,xbmcgui
-    def unescape(s):
+    def cleanup(s):
         return re.sub('&#(\d+);', '', s)    
     class page:
         def run(self, r):
@@ -599,14 +598,14 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
             [i.start() for i in threads] ; [i.join() for i in threads]
             return ''.join([str(i[1]) for i in sorted(self.r, key=lambda x: x[0])])
         def request(self, i):
-            self.r += [(i[0], client.request(i[1]))]       
+            self.r += [(i[0], client.request(i[1]))]
 
     url = 'https://nablog.org/popular-videos-weekly/page/'
     u = []
     for i in range(1, 10): u += [url + str(i) + '/']
     u = page().run(u)
     r = re.findall('(?s)id="post-index-content(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^=]*)=(?:[^=]*)="(?:[^:]*)([^"]*)(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
-    r = [(i[0], i[1], unescape(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2]]
+    r = [(i[0],'https'+i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
     return r
 ]]></expres>
 <page></page>
