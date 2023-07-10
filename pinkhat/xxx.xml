@@ -539,7 +539,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     u = []
     for i in range(1, 10): u += [url + str(i) + '/']
     u = page().run(u)
-    r = re.findall('((?s)id="post-index-content(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^=]*)="([^"]*)(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
+    r = re.findall('(?s)id="post-index-content(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^=]*)="([^"]*)(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
     r = [(i[0],'https'+i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
     return r
 ]]></expres>
