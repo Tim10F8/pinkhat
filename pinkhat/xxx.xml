@@ -518,7 +518,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 <listrepeat><![CDATA[
         <title>[makelist.param3]</title>
         <link>$doregex[playurl]</link>
-        <thumbnail>[makelist.param2]</thumbnail>
+        <thumbnail>[makelist.param1]</thumbnail>
 ]]></listrepeat>
 <expres><![CDATA[#$pyFunction
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
@@ -540,7 +540,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     for i in range(1, 10): u += [url + str(i) + '/']
     u = page().run(u)
     r = re.findall('(?s)id="post-index-content(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)(?:[^=]*)="([^"]*)(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)=(?:[^=]*)="([^"]*)', u)
-    r = [(i[0],'https'+i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
+    r = [(i[0],i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
     return r
 ]]></expres>
 <page></page>
@@ -551,7 +551,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client
     import re
-    url = '[makelist.param1]'
+    url = '[makelist.param2]'
     from resources.lib.modules import control
     adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
     adultresolver = adultresolver.streamer()
