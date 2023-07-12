@@ -57,7 +57,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client
     import re
-    url = 'https://www.redtube.com[makelist.param5]'
+    url = '[makelist.param5]'
     u = client.request(url)
     c = re.findall('(?s)playervars.*?mp4"\,"videoUrl":"([^"]*)',u)[0].replace('\/','/')
     o = client.request(c)
