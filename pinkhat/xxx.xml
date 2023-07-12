@@ -818,7 +818,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 <thumbnail></thumbnail>
 </plugin>
 
-<item>
+<item
 <name>Porn Movies Debrid - [COLOR orchid] HP[/COLOR]</name>
 <link>$doregex[makelist]</link>
 <thumbnail></thumbnail>
