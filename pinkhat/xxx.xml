@@ -804,7 +804,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 </regex>
 </item>
 
-<dir>
+<dir
   <name>mPorno</name>
   <link>https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/mporno.xml</link>
   <thumbnail>https://previews.123rf.com/images/eyematrix/eyematrix1103/eyematrix110300035/8984900-adults-only-rubber-stamp.jpg</thumbnail>
