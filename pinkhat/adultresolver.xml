@@ -723,7 +723,7 @@ class streamer:
     def motherless(self, url):
         try:
            u = client.request(url)
-           r = re.findall('fileurl = \'([^\']*)', u)[0]
+           r = re.findall('(?s)source src="([^"]*).*?res="([^"]*)', u)[0]
            return r
         except:
             return
