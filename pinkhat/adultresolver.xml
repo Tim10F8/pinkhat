@@ -115,6 +115,8 @@ class streamer:
 
             elif 'chaturbate' in url: u = self.chaturbate(url)
 
+            elif 'motherless' in url: u = self.motherless(url)
+
             else: u = self.generic(url)
 
             return u
@@ -715,5 +717,13 @@ class streamer:
            r = r.encode('utf-8').decode('unicode-escape')
            e = re.findall('"hls_source": "([^"]*)', r)[0]
            return e
+        except:
+            return
+                                    
+    def motherless(self, url):
+        try:
+           u = client.request(url)
+           r = re.findall('fileurl = \'([^\']*)', u)[0]
+           return r
         except:
             return
