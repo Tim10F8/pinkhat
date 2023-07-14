@@ -814,7 +814,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 <listrepeat><![CDATA[
         <title>[makelist.param3]</title>
         <link>$doregex[playurl]</link>
-        <thumbnail>[makelist.param1]</thumbnail>
+        <thumbnail>[makelist.param2]</thumbnail>
 ]]></listrepeat>
 <expres><![CDATA[#$pyFunction
 def GetLSProData(page_data,Cookie_Jar,m,url = ''):
