@@ -115,7 +115,7 @@ class streamer:
 
             elif 'chaturbate' in url: u = self.chaturbate(url)
 
-            elif 'motherless' in url: u = self.motherless(url)
+            elif 'cumlouder' in url: u = self.cumlouder(url)
 
             else: u = self.generic(url)
 
@@ -666,16 +666,8 @@ class streamer:
             e = re.findall('(?s)<iframe src="([^"]*)', u)[0]
             return e
         except:
-            return  
-            
-    def motherless(self, url):
-        try:           
-            u = client.request(url)
-            e = re.findall('(?s)"file": "([^"]*)', u)[0]
-            return e
-        except:
-            return  
-            
+            return
+
     def xvideos(self, url):
         try:           
             u = client.request(url)
@@ -719,11 +711,19 @@ class streamer:
            return e
         except:
             return
-                                    
+
     def motherless(self, url):
         try:
            u = client.request(url)
            r = re.findall('(?s)source src="([^"]*).*?res="([^"]*)', u)[0]
+           return r
+        except:
+            return
+
+    def cumlouder(self, url):
+        try:
+           u = client.request(url)
+           r = re.findall('id="download-url" class="botones" href="([^"]*)', u)[0]
            return r
         except:
             return
