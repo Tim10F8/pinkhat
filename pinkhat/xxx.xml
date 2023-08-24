@@ -896,7 +896,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 </regex>
 </item>
 
-<item>
+<item
 <name>Motherless: HD</name>
 <link>$doregex[makelist]</link>
 <thumbnail></thumbnail>
