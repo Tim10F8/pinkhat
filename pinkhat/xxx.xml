@@ -59,8 +59,8 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     import re
     url = '[makelist.param5]'
     u = client.request(url)
-    c = re.findall('(?s)playervars.*?mp4"\,"videoUrl":"([^"]*)',u)[0].replace('\/','/')
-    o = client.request(c)
+    c = re.findall('(?s)"format":"mp4","videoUrl":"([^"]*)',u)[0].replace('\/','/')
+    o = client.request('https://www.redtube.com'+c)
     e = re.findall('(?s)ty"\:"(\d+)(?:[^\:]*)\:"([^"]*)', o)
     e = [(i[0],i[1].replace('\/','/')) for i in e]
     return e
@@ -386,7 +386,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     u = []
     for i in range(1,5): u += [url + str(i)]
     u = page().run(u)
-    u = re.findall('(?s)"room_list_room(?:[^<]*)<a href="([^"]*)(?:[^<]*)<img src="([^"]*).+?data-room="([^"]*)', u)
+    u = re.findall('(?s)"broadcaster-cell" href="([^"]*)[^=]*=[^=]*=[^=]*="(http[^"]*)[^\']*\'[^\']*\'[^\']*\'([^\']*)', u)
     sort = [('https://chaturbate.com'+i[0],i[1],i[2]) for i in u]
     return sort
 ]]></expres>
