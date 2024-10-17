@@ -511,7 +511,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 </item>
 
 <item>
-<name>[COLOR orchid]Debrid Links:[/COLOR] Recent Videos</name>
+<name>[COLOR orchid]Debrid Links:[/COLOR] Recent Videos TEST</name>
 <link>$doregex[makelist]</link>
 <thumbnail></thumbnail>
 <regex>
