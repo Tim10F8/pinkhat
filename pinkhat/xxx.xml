@@ -550,10 +550,14 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     from resources.lib.modules import client
     import re
     url = '[makelist.param1]'
-    from resources.lib.modules import control
-    adultresolver = control.cdnImport('https://raw.githubusercontent.com/posadka/pinkhat/main/pinkhat/adultresolver.xml', 'adultresolver')
-    adultresolver = adultresolver.streamer()
-    url = adultresolver.resolve(url)
+    import xbmc,xbmcgui
+    pDialog = xbmcgui.DialogProgress()
+    pDialog.create('[B][COLOR orchid]THE CREW SPORTS[/COLOR][/B]', 'The Crew Is Loading Your Event Please Wait....')
+    url = client.external('[makelist.param1]')
+    pDialog.update(65,'The Crew Is Loading Your Event Please Wait....')
+    pDialog.close()
+    if (pDialog.iscanceled()): return
+    return url
     r = url
     r0 = [i[1] for i in r] ; r1 = ['[COLOR orchid]DEBRID-[/COLOR]'+i[0].upper() for i in r]
 
@@ -566,7 +570,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
         link = r0[0]
     return link
 ]]></expres>
-<page></page>
+<page>[makelist.param1]</page>
 </regex>
 </item>
 
