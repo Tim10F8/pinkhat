@@ -511,70 +511,6 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
 </item>
 
 <item>
-<name>[COLOR orchid]Debrid Links:[/COLOR] Recent Videos TEST</name>
-<link>$doregex[makelist]</link>
-<thumbnail></thumbnail>
-<regex>
-<name>makelist</name>
-<listrepeat><![CDATA[
-        <title>[makelist.param3]</title>
-        <link>$doregex[playurl]</link>
-        <thumbnail>[makelist.param2]</thumbnail>
-]]></listrepeat>
-<expres><![CDATA[#$pyFunction
-def GetLSProData(page_data,Cookie_Jar,m,url = ''):
-    from resources.lib.modules import client,workers
-    import re,xbmc,xbmcgui,requests
-    def cleanup(s):
-        return re.sub('&#(\d+);', '', s)    
-    u = ''
-    u += client.request('https://www.naughtyblog.org')
-    u += client.request('https://www.naughtyblog.org/page/2/')
-    u += client.request('https://www.naughtyblog.org/page/3/')
-    u += client.request('https://www.naughtyblog.org/page/4/')
-    u += client.request('https://www.naughtyblog.org/page/5/')
-    u += client.request('https://www.naughtyblog.org/page/6/')
-    u += client.request('https://www.naughtyblog.org/page/7/')
-    u += client.request('https://www.naughtyblog.org/page/8/')
-    u += client.request('https://www.naughtyblog.org/page/9/')
-    r = re.findall('(?s)id="post-index-content.*?href="([^"]*).*?src="([^"]*).*?title="([^"]*)', u)
-    r = [(i[0],i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
-    return r
-]]></expres>
-<page></page>
-</regex>
-<regex>
-<name>playurl</name>
-<expres><![CDATA[#$pyFunction
-def GetLSProData(page_data,Cookie_Jar,m,url = ''):
-    from resources.lib.modules import client
-    import re
-    url = '[makelist.param1]'
-    import xbmc,xbmcgui
-    pDialog = xbmcgui.DialogProgress()
-    pDialog.create('[B][COLOR orchid]THE CREW SPORTS[/COLOR][/B]', 'The Crew Is Loading Your Event Please Wait....')
-    url = client.external('[makelist.param1]')
-    pDialog.update(65,'The Crew Is Loading Your Event Please Wait....')
-    pDialog.close()
-    if (pDialog.iscanceled()): return
-    return url
-    r = url
-    r0 = [i[1] for i in r] ; r1 = ['[COLOR orchid]DEBRID-[/COLOR]'+i[0].upper() for i in r]
-
-    if len(r1) > 1:
-        label = control.infoLabel('listitem.label')
-        select = control.dialog.select(label.upper(), r1)
-        if select == -1: return
-        link = r0[select]
-    else:
-        link = r0[0]
-    return link
-]]></expres>
-<page>[makelist.param1]</page>
-</regex>
-</item>
-
-<item>
 <name>[COLOR orchid]Debrid Links:[/COLOR] Recent Videos</name>
 <link>$doregex[makelist]</link>
 <thumbnail></thumbnail>
@@ -606,7 +542,7 @@ def GetLSProData(page_data,Cookie_Jar,m,url = ''):
     u = []
     for i in range(1, 10): u += [url + str(i) + '/']
     u = page().run(u)
-    r = re.findall('(?s)id="post-index-content.*?href="([^"]*).*?src="([^"]*).*?title="([^"]*)', u)
+    r = re.findall('(?s)id="post-index-content.*?href=.*?href="([^"]*).*?src="([^"]*).*?title="([^"]*)', u)
     r = [(i[0],i[1], cleanup(i[2])) for i in r if 'SITERIP' not in i[2] if 'goo' not in i[2] if 'Leak' not in i[2] if 'Collection' not in i[2]]
     return r
 ]]></expres>
